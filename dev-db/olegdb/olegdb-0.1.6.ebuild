@@ -20,3 +20,10 @@ PATCHES=(
 DEPEND=">=dev-lang/go-1.13"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_install() {
+	dobin olegdb
+	dolib.so "liboleg.so.${PV}"
+	dosym "liboleg.so.${PV}" "/usr/$(get_libdir)/liboleg.so.0"
+	dosym "liboleg.so.${PV}" "/usr/$(get_libdir)/liboleg.so"
+}
