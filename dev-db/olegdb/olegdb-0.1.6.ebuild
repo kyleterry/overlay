@@ -14,17 +14,9 @@ IUSE=""
 S="${WORKDIR}/OlegDB-v.${PV}"
 
 PATCHES=(
-	"${FILESDIR}/destdir-0.1.6.patch"
+	"${FILESDIR}/fix-build-0.1.6.patch"
 )
 
 DEPEND=">=dev-lang/go-1.13"
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-src_compile() {
-	emake liboleg olegdb || die "emake failed"
-}
-
-src_install() {
-	emake PREFIX="${D}/usr" install
-}
